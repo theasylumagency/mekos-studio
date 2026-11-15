@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, type CSSProperties, type FormEvent } from "react";
 import { models, references } from "@/lib/catalog";
-import { studioEmail, type Locale } from "@/lib/site";
+import { inboxEmail, type Locale } from "@/lib/site";
 import { openOrder, OrderButtons } from "./order-controls";
 import { Arrow } from "./studio-shell-icons";
 import { Stripes } from "./stripes";
@@ -125,7 +125,7 @@ export function FlowerOrders({ locale }: { locale: Locale }) {
       [text.details, data.get("details")],
     ];
     const message = [text.greeting, ...rows.filter(([, value]) => String(value ?? "").trim()).map(([label, value]) => `${label}: ${String(value).trim()}`)];
-    openOrder(event, studioEmail, text.subject, message.join("\n"));
+    openOrder(event, inboxEmail, text.subject, message.join("\n"));
   }
 
   return (

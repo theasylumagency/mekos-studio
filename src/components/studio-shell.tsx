@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { content } from "@/lib/content";
-import { pagePath, sections, socialLinks, studioEmail, type Locale, type StudioPage } from "@/lib/site";
+import { inboxEmail, pagePath, sections, socialLinks, studioEmail, type Locale, type StudioPage } from "@/lib/site";
 import { Arrow } from "./studio-shell-icons";
 import { Stripes } from "./stripes";
 import "@/app/globals.css";
@@ -54,7 +54,7 @@ export function StudioFooter({ locale }: { locale: Locale }) {
             <h2>{copy.contactTitle}</h2>
             <p>{copy.contactDescription}</p>
           </div>
-          <a className="footer-email" href={`mailto:${studioEmail}`}>{studioEmail} <Arrow diagonal /></a>
+          <a className="footer-email" href={`mailto:${inboxEmail}`}>{studioEmail} <Arrow diagonal /></a>
         </div>
         <div className="footer-bottom">
           <Link className="brand" href={pagePath(locale)} aria-label={`${copy.studio} · ${copy.homeLabel}`}>

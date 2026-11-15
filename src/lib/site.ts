@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 
 export const siteUrl = "https://mekos.studio";
+/** The address shown on the site. */
 export const studioEmail = "hello@mekos.studio";
-export const rollsEmail = "hello@almostanother.com";
+/**
+ * Where every enquiry is actually sent: the inbox Meko reads.
+ * If hello@mekos.studio is ever forwarded to this inbox, set this to studioEmail.
+ */
+export const inboxEmail = "mmekomeko@gmail.com";
 export const whatsapp = "https://wa.me/995557471554";
 export const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/mmekomeko/" },

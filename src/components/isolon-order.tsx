@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, type CSSProperties, type FormEvent } from "react";
 import { rollColors } from "@/lib/catalog";
-import { rollsEmail, type Locale } from "@/lib/site";
+import { inboxEmail, type Locale } from "@/lib/site";
 import { openOrder, OrderButtons } from "./order-controls";
 import { Stripes } from "./stripes";
 
@@ -56,7 +56,7 @@ export function IsolonOrder({ locale }: { locale: Locale }) {
   }
 
   function submit(event: FormEvent<HTMLFormElement>) {
-    openOrder(event, rollsEmail, text.subject, `${text.greeting}\n${text.color}: ${color.name[locale]}\n${text.quantity}: ${quantity}`);
+    openOrder(event, inboxEmail, text.subject, `${text.greeting}\n${text.color}: ${color.name[locale]}\n${text.quantity}: ${quantity}`);
   }
 
   return (
