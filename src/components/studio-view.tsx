@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { content, pageImages } from "@/lib/content";
+import { content, pageImages, projectImages } from "@/lib/content";
 import { pagePath, studioMetadata, whatsAppLink, type Locale, type Section, type StudioPage } from "@/lib/site";
 import { StudioFooter, StudioHeader } from "./studio-shell";
 import { Arrow } from "./studio-shell-icons";
 import { HeroLoop } from "./hero-loop";
 import { Stripes } from "./stripes";
 import { CompositionIcon } from "./composition-icon";
+import { ProjectGallery } from "./project-gallery";
 import { FlowerOrders } from "./flower-orders";
 import { IsolonOrder } from "./isolon-order";
 
@@ -42,7 +43,7 @@ function Home({ locale }: { locale: Locale }) {
   return (
     <>
       <section className="home-hero" aria-labelledby="home-title">
-        <HeroLoop src={photo("hero-loop.mp4")} poster={photo("hero-poster.webp")} />
+        <HeroLoop wide={{ src: photo("hero-loop.mp4"), poster: photo("hero-poster.webp") }} tall={{ src: photo("hero-loop-mobile.mp4"), poster: photo("hero-poster-mobile.webp") }} />
         <div className="glass-panel">
           <Stripes className="hero-stripes" />
           <p className="eyebrow">{home.eyebrow}</p>
@@ -162,6 +163,12 @@ function Installations({ locale }: { locale: Locale }) {
             </article>
           ))}
         </div>
+      </section>
+      <section className="section-space frame" id="projects">
+        <div className="section-heading"><h2>{copy.projects}</h2><p>{copy.projectsText}</p></div>
+        <ProjectGallery
+          projects={projectImages.map((item, index) => ({ ...item, src: photo(item.src), caption: copy.projectCaptions[index] }))}
+          labels={{ open: copy.open, close: copy.close, previous: copy.previous, next: copy.next }} />
       </section>
       <section className="section-space frame" id="gallery">
         <h2 className="section-heading">{copy.gallery}</h2>

@@ -274,10 +274,11 @@ html[lang='ka'] .glass-panel h1 { font-size: clamp(38px, 4.3vw, 70px); }
 
 @media (max-width: 760px) {
   .stripes { --s: .7; }
-  .home-hero { grid-template-columns: minmax(0, 1fr); align-items: end; min-height: 100svh; padding: 118px 12px 12px; }
-  .home-hero, .hero-loop { background-position: 30% 40%; object-position: 30% 40%; }
+  /* Phones: the film gets the whole first screen; the panel starts below it and peeks up from the bottom edge. */
+  .home-hero { display: block; min-height: 0; padding: 0 0 12px; overflow: visible; background: none; }
+  .hero-loop { position: relative; inset: auto; display: block; width: 100%; height: calc(100svh - 64px); min-height: 520px; object-position: 50% 30%; background: #e7d2cd url('/studio/hero-poster-mobile.webp') 50% 30% / cover no-repeat; }
+  .home-hero .glass-panel { margin: -48px 12px 0; background: rgb(52 78 62 / .95); }
   .glass-panel { padding: 92px 24px 28px; }
-  .home-hero .glass-panel { grid-column: 1; }
   .hero-stripes { left: 24px; }
   .glass-panel h1, html[lang='ka'] .glass-panel h1 { font-size: clamp(34px, 9vw, 52px); text-wrap: wrap; }
   .site-footer { --footer-pad: 96px; }
@@ -492,6 +493,44 @@ html[lang='ka'] .glass-panel h1 { font-size: clamp(38px, 4.3vw, 70px); }
 .faq-list details[open] summary::after { content: '−'; background: var(--stripe-3); }
 .faq-list summary:hover::after { background: var(--stripe-1); }
 .faq-list p { padding: 0 46px 16px 0; }
+
+/* ── Installations: finished projects (masonry + full-screen viewer) ──── */
+.project-masonry { columns: 3; column-gap: clamp(12px, 1.6vw, 22px); margin: 0; padding: 0; list-style: none; }
+.project-masonry > li { break-inside: avoid; margin-bottom: clamp(16px, 2vw, 28px); }
+.project-tile { position: relative; display: block; width: 100%; padding: 0; border: 0; background: var(--blush); overflow: hidden; cursor: zoom-in; }
+.project-tile img { display: block; width: 100%; height: auto; transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+.project-tile:hover img { transform: scale(1.03); }
+.project-tile::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: var(--stripe-1); }
+.project-masonry > li:nth-child(6n+2) .project-tile::after { background: var(--stripe-3); }
+.project-masonry > li:nth-child(6n+3) .project-tile::after { background: var(--stripe-4); }
+.project-masonry > li:nth-child(6n+4) .project-tile::after { background: var(--stripe-5); }
+.project-masonry > li:nth-child(6n+5) .project-tile::after { background: var(--stripe-2); }
+.project-masonry > li:nth-child(6n) .project-tile::after { background: var(--stripe-6); }
+.project-caption { margin-top: 8px; font-size: 14px; line-height: 1.35; }
+.project-viewer { width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: rgb(22 30 25 / .96); color: var(--white); }
+.project-viewer::backdrop { background: rgb(22 30 25 / .7); }
+.project-viewer[open] { display: grid; place-items: center; }
+.project-viewer figure { display: grid; justify-items: center; gap: 12px; max-width: min(92vw, 1400px); margin: 0; }
+.project-viewer img { width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 120px); object-fit: contain; animation: stage-in .35s ease both; }
+.project-viewer figcaption { display: flex; justify-content: space-between; gap: 24px; width: 100%; font-size: 15px; }
+.project-count { color: rgb(255 255 255 / .65); font-variant-numeric: tabular-nums; }
+.viewer-button { position: fixed; display: grid; place-items: center; width: 52px; height: 52px; border: 1px solid rgb(255 255 255 / .5); border-radius: 50%; background: rgb(22 30 25 / .5); color: var(--white); font: 22px/1 Arial, sans-serif; transition: background .18s, color .18s; }
+.viewer-button:hover { background: var(--white); color: var(--ink); }
+.viewer-close { top: 18px; right: 18px; font-size: 28px; }
+.viewer-prev { left: 18px; top: calc(50% - 26px); }
+.viewer-next { right: 18px; top: calc(50% - 26px); }
+
+@media (max-width: 1040px) {
+  .project-masonry { columns: 2; }
+}
+
+@media (max-width: 620px) {
+  .project-caption { font-size: 13px; }
+  .viewer-prev, .viewer-next { top: auto; bottom: 18px; }
+  .viewer-prev { left: calc(50% - 64px); }
+  .viewer-next { right: calc(50% - 64px); }
+  .project-viewer img { max-height: calc(100dvh - 170px); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

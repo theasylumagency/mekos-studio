@@ -1,5 +1,8 @@
 import type { Locale, StudioPage } from "./site";
 
+/** Finished client projects on the Installations page, in display order (captions live in each locale's `installations.projectCaptions`). */
+export const projectImages = ([["anouki", 1800, 1350], ["iris", 1296, 1800], ["porsche", 1526, 1800], ["luxio", 1393, 1800], ["sculpture", 1441, 1800], ["christmas-window", 1350, 1800], ["hero-poppies", 1024, 1800], ["time-window", 1541, 1800], ["jewellery-tulips", 1200, 1800], ["jewellery-tulip", 1200, 1800], ["cosmetics", 1274, 1800], ["fashion", 1800, 1012], ["bouquet", 1727, 1800], ["garden-roses", 1800, 1200], ["event-table", 1800, 1200]] as const).map(([name, width, height]) => ({ src: `projects/${name}.webp`, width, height }));
+
 export const pageImages = {
   home: "prtfolio/main.webp",
   art: "banners/art-hero.webp",
@@ -75,6 +78,29 @@ const ka = {
       ["თაღი ან კედელი", "ყვავილების ფონი ან შესასვლელის ჩარჩო."],
       ["ჭერის კომპოზიცია", "ჭერიდან ჩამოკიდებული მსუბუქი ინსტალაცია მაღაზიისა თუ ღონისძიებისთვის."],
     ],
+    projects: "შესრულებული პროექტები",
+    projectsText: "ვიტრინები, მაღაზიები, სავაჭრო სივრცეები და ღონისძიებები, რომლებიც მეკოს ყვავილებმა გააცოცხლა.",
+    projectCaptions: [
+      "Anouki Beauty · კოსმეტიკის სტენდი",
+      "ზამბახი მაღაზიის შესასვლელთან",
+      "Porsche 964 · ექსპოზიცია",
+      "LUXIO by AKZENTZ · ბრენდის კედელი",
+      "გიგანტური ყვავილები ინტერიერისთვის",
+      "საახალწლო ვიტრინა",
+      "ჰერო · ვიტრინა ყაყაჩოებით",
+      "TIME · საიუველირო ვიტრინა",
+      "სამკაულის სალონი · ტიტები",
+      "სამკაულის სალონი",
+      "კოსმეტიკის ექსპოზიცია",
+      "ტანსაცმლის ბუტიკი",
+      "ყვავილოვანი კომპოზიცია ვიტრინაზე",
+      "ღონისძიება ღია ცის ქვეშ",
+      "სადღესასწაულო მაგიდა",
+    ],
+    open: "ფოტოს გადიდება",
+    close: "დახურვა",
+    previous: "წინა ფოტო",
+    next: "შემდეგი ფოტო",
     gallery: "სახელოსნოდან სივრცემდე",
     scale: "≈ 2,7 მ",
     photos: [
@@ -188,6 +214,29 @@ const en: typeof ka = {
       ["Arch or wall", "A floral backdrop or a frame for an entrance."],
       ["Suspended arrangement", "A lightweight installation suspended from the ceiling for a shop or event."],
     ],
+    projects: "Recent projects",
+    projectsText: "Shop windows, boutiques, retail spaces and events brought to life with Meko’s flowers.",
+    projectCaptions: [
+      "Anouki Beauty · cosmetics counter",
+      "An iris at a shop entrance",
+      "Porsche 964 · display",
+      "LUXIO by AKZENTZ · brand wall",
+      "Oversized flowers for an interior",
+      "Christmas shop window",
+      "HERO · shop window with poppies",
+      "TIME · jewellery window",
+      "Jewellery boutique · tulips",
+      "Jewellery boutique",
+      "Cosmetics display",
+      "Fashion boutique",
+      "Floral arrangement above a counter",
+      "Outdoor event",
+      "Event table",
+    ],
+    open: "Enlarge photo",
+    close: "Close",
+    previous: "Previous photo",
+    next: "Next photo",
     gallery: "From workshop to installation",
     scale: "≈ 2.7 m",
     photos: [
